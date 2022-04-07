@@ -10,21 +10,28 @@
         <div class="nav-bar"></div>
 
         <div id='app'>
-            <div class="prouct">
+            <div class='product'>
 
-                <div class="product-Image">
-                    <img v-bind:src="image">
+                <div class='product-image'>
+                    <img v-bind:src='image'>
                 </div>
 
-                <div class="product-Info">
+                <div class='product-info'>
                     <h1>{{product}}</h1>
-                    <p v-if="inventory > 10">In Stock</p>
-                    <p v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out!</p>
-                    <p v-else="outOfStock">Out of Stock</p>
+                    <p v-if='inStock'>In Stock</p>
+                    <p v-else>Out of Stock</p>
+
+                    <ul>
+                        <li v-for='detail in details'>{{detail}}</li>
+                    </ul>
+
+                    <div v-for='variant in variants' :key='variant.variantId'>
+                        <p>{{variant.variantColor}}</p>
+                    </div>
+
+                    <p>On Sale!</p>
                 </div>
 
-            <p>{{description}}</p>
-            <a v-bind:href = 'link'></a>
          </div>
         </div>
 
